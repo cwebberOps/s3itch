@@ -53,9 +53,9 @@ class S3itchApp < Sinatra::Base
     sdsc.directories.get(ENV['BUCKET'])
   end
 
-  def post_to_campfire(:url)
+  def post_to_campfire(url)
     campfire = Tinder::Campfire.new ENV['CAMPFIRE_SUBDOMAIN'], :token => ENV['CAMPFIRE_TOKEN']
     room = campfire.find_room_by_name(ENV['CAMPFIRE_ROOM'])
-    room.speak :url
+    room.speak url
   end
 end
