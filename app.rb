@@ -26,7 +26,7 @@ class S3itchApp < Sinatra::Base
       puts "Uploaded file #{params[:name]} to SDSC"
       begin
         if ENV['CAMPFIRE']
-          post_to_campfire("http://#{ENV['BUCKET']}/#{params[:name]}")
+          post_to_campfire("#{ENV['BASE_URL']}/#{params[:name]}")
         end
       rescue => e
         puts "Posting to campfire failed: #{e.message}"
